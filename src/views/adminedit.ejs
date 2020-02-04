@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <%- include ("partials/head") %>
+  </head>
+  <body>
+    <%- include ("partials/navbar") %>
+    <center>
+
+        <a href="/admin">Back to the admin panel</a>
+
+        <p>Name: <%= trackingCode.name %></p>
+        <p>Status: <%= trackingCode.status %></p>
+        <p>Email: <%= trackingCode.email %></p>
+        <p>Notes: <%= trackingCode.notes %></p>
+        <p>Code: <%= trackingCode.code %></p>
+    
+        <h3>Delete</h3>
+        <form action="/admin/api/delete" method="post">
+          <input type="text" name="code" class="hide" value="<%= trackingCode.code %>">
+          <input type="submit" value="Delete">
+        </form>
+
+        <h3>Edit name</h3>
+        <form action="/admin/api/update/name" method="post">
+            <input type="text" name="code" id="code" value="<%= trackingCode.code %>" class="hide">
+            <input type="text" name="newName" id="newName" value="<%= trackingCode.name %>">
+            <input type="submit" value="Edit name">
+        </form>
+        <h3>Edit status</h3>
+        <form action="/admin/api/update/status" method="post">
+            <input type="text" name="code" id="code" value="<%= trackingCode.code %>" class="hide">
+            <input type="text" name="newStatus" id="newStatus" value="<%= trackingCode.status %>">
+            <input type="submit" value="Edit status">
+        </form>
+        <h3>Edit email</h3>
+        <form action="/admin/api/update/email" method="post">
+            <input type="text" name="code" id="code" value="<%= trackingCode.code %>" class="hide">
+            <input type="text" name="newEmail" id="newEmail" value="<%= trackingCode.email %>">
+            <input type="submit" value="Edit email">
+        </form>
+        <h3>Edit notes</h3>
+        <form action="/admin/api/update/notes" method="post">
+            <input type="text" name="code" id="code" value="<%= trackingCode.code %>" class="hide">
+            <input type="text" name="newNotes" id="newNotes" value="<%= trackingCode.notes %>">
+            <input type="submit" value="Edit notes">
+        </form>    </center>
+
+    <a href="/logout">Log out</a>
+  </body>
+</html>

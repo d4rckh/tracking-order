@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <%- include ("partials/head") %>
+  </head>
+  <body>
+    <%- include ("partials/navbar") %>
+
+    <center>
+          <p>
+              ID: <%= user.id %><br/>
+              Username: <%= user.username %><br/>
+          </p>
+          
+          <div>
+            <h3>Create Tracking Code</h3>
+            <form action="/admin/api/create" method="post">
+              <input type="text" name="name" placeholder="Name">
+              <input type="text" name="status" placeholder="Status">
+              <input type="text" name="email" placeholder="Email">
+              <input type="submit" value="Create entry">
+            </form>
+          </div>
+
+          <div>
+            <h3>Tracking Codes</h3>
+            <table>
+              <tr>
+                  <th>Name</th>
+                  <th>Status</th>
+                  <th>Email</th>
+                  <th>Notes</th>
+                  <th>Code</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+              </tr>
+              <% trackingCodes.forEach((trackingCode) => { %>
+                  <tr>
+                      <td><%= trackingCode.name %></td>
+                      <td><%= trackingCode.status %></td>
+                      <td><%= trackingCode.email %></td>
+                      <td><%= trackingCode.notes %></td>
+                      <td><%= trackingCode.code %></td>
+                      <td><a href="/admin/<%= trackingCode.code %>">Edit</a></td>
+                      <td>
+                        <form action="/admin/api/delete" method="post">
+                          <input type="text" name="code" class="hide" value="<%= trackingCode.code %>">
+                          <input type="submit" value="Delete">
+                        </form>
+                      </td>  
+                  </tr>    
+              <% }) %>
+            </table>
+          </div>
+    </center>
+  
+    <a href="/logout">Log out</a>
+  </body>
+</html>

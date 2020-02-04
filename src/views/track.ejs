@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<%- include ("partials/head") %>
+	</head>
+	<body>
+		<%- include ("partials/navbar") %>
+
+
+        <div class="container">
+            <h1>Track your order!</h1><br>
+            <form action="/trackorder" method="POST" class="container">
+                <div class="form-group">
+                  <label for="trackingCode">Tracking Code</label>
+                  <input type="text" class="form-control" id="trackingCode" name="trackingCode">
+                </div>
+                <button type="submit" class="btn btn-primary">Search!</button>
+            </form>
+            <br><br>
+
+            <% if(data) { %>
+                <h3>Found Tracking Code!</h3>
+
+                <p>Name: <%= data.name %></p>
+                <p>Status: <%= data.status %></p>
+                <p>Email: <%= data.email %></p>
+                <p>Notes: <%= data.notes %></p>
+                <p>Code: <%= data.code %></p>
+            <% } %>
+        </div>
+
+	</body>
+</html>
+
